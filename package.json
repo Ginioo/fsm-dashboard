@@ -1,0 +1,31 @@
+{
+  "name": "fsm-dashboard",
+  "version": "1.0.0",
+  "description": "This is a dashboard component based on libraries including xstate and react-grid-layout.",
+  "keywords": [
+    "dashboard",
+    "xstate",
+    "finite state machine",
+    "react-grid-layout"
+  ],
+  "main": "src/index.js",
+  "dependencies": {
+    "@xstate/react": "0.8.1",
+    "lodash": "4.17.15",
+    "react": "16.12.0",
+    "react-dom": "16.12.0",
+    "react-scripts": "3.3.0",
+    "styled-components": "4.4.1",
+    "xstate": "4.7.6"
+  },
+  "devDependencies": {
+    "typescript": "3.3.3"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "browserslist": [">0.2%", "not dead", "not ie <= 11", "not op_mini all"]
+}
