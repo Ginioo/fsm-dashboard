@@ -1,5 +1,5 @@
 {
-  "name": "fsm-dashboard",
+  "name": "xstate-dashboard",
   "version": "1.0.0",
   "description": "This is a dashboard component based on libraries including xstate and react-grid-layout.",
   "keywords": [
@@ -16,7 +16,7 @@
     "react-dom": "16.12.0",
     "react-scripts": "3.3.0",
     "styled-components": "4.4.1",
-    "xstate": "4.7.6"
+    "xstate": "4.9.0"
   },
   "devDependencies": {
     "typescript": "3.3.3"
