@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import React, { Fragment } from "react";
 import { useMachine } from "@xstate/react";
 import machine from "./../machines/dashboardMachine";
 
