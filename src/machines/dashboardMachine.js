@@ -1,7 +1,8 @@
 import { Machine, assign, spawn } from "xstate";
-import panelMachine from "./panelMachine";
 import _get from "lodash/get";
 import _find from "lodash/find";
+
+import panelMachine from "./panelMachine";
 
 const dashboardMachine = {
   id: "dashboard",
@@ -34,7 +35,7 @@ const options = {
         ref: spawn(panelMachine.withContext(item))
       }));
       const active = _get(dashboards, "[0]", {});
-      const activeKey = _get(active, "id", "");
+      const activeKey = _get(active, "id", false);
 
       return {
         dashboards,
