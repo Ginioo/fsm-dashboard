@@ -14,12 +14,19 @@ const dashboardMachine = {
   },
   states: {
     loading: {
-      entry: "initialize",
-      on: {
-        "": "ready"
+      invoke: {
+        src: "fetchDashboards",
+        onDone: {
+          target: 'ready',
+          actions: assign({ dashboards: (context, event) => {
+            console.log(event.data);
+            return event.data;
+          }})
+        }
       }
     },
     ready: {
+      entry: "initialize",
       on: {
         SELECT_DASHBOARD: { actions: "changeActiveItem" }
       }
@@ -47,6 +54,9 @@ const options = {
       activeKey: e.key,
       active: _find(ctx.dashboards, item => item.id === e.key)
     }))
+  },
+  services: {
+    fetchDashboards: () => new Promise(resolve => resolve([]))
   }
 };
 

@@ -2,12 +2,12 @@ import React, { Fragment } from "react";
 import { useMachine } from "@xstate/react";
 import machine from "./../machines/dashboardMachine";
 
-const Dashboard = ({ children, data = [] }) => {
-  const [state, send] = useMachine(
-    machine.withContext({
-      dashboards: data
-    })
-  );
+const Dashboard = ({ children, dataProvider }) => {
+  const [state, send] = useMachine(machine.withConfig({
+    services: {
+      fetchDashboards: (context, event) => dataProvider.fetchDashboards()
+    }
+  }));
   const { active, dashboards } = state.context;
   const selectDashboard = key => send("SELECT_DASHBOARD", { key });
 
