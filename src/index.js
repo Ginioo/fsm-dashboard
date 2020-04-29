@@ -6,16 +6,23 @@ import Panel from "./components/Panel";
 import Loader from "./components/Loader";
 import dataProvider from "./dataProvider/sampleDataProvider";
 
-function App() {
+import { SampleButton } from "./components/styled/SampleButton";
+
+function App({ Button, Item }) {
   return (
     <Dashboard dataProvider={dataProvider}>
       {({ current, dashboards, selectDashboard }) => (
         <Fragment>
           <Fragment>
-            {dashboards.map(item => (
-              <button key={item.id} onClick={() => selectDashboard(item.id)}>
-                {item.name}
-              </button>
+            {dashboards.map(it => (
+              <Button
+                  key={it.id}
+                  active={current.id === it.id}
+                  onClick={() => selectDashboard(it.id)}
+                  onMouseEnter={() => selectDashboard(it.id)}
+              >
+                {it.name}
+              </Button>
             ))}
           </Fragment>
           {current.ref && (
@@ -35,4 +42,4 @@ function App() {
   );
 }
 
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(<App Button={SampleButton} />, document.getElementById("root"));
