@@ -8,7 +8,7 @@ import dataProvider from "./dataProvider/sampleDataProvider";
 
 import { SampleButton } from "./components/styled/SampleButton";
 
-function App({ Button, Item }) {
+function Demo({ Button, Item }) {
   return (
     <Dashboard dataProvider={dataProvider}>
       {({ current, dashboards, selectDashboard }) => (
@@ -42,4 +42,4 @@ function App({ Button, Item }) {
   );
 }
 
-ReactDOM.render(<App Button={SampleButton} />, document.getElementById("root"));
+ReactDOM.render(<Demo Button={SampleButton} />, document.getElementById("root"));
