@@ -1,7 +1,7 @@
-import React, { useEffect, Fragment } from "react";
+import React, { useEffect, Fragment, isValidElement } from "react";
 import { useService } from "@xstate/react";
 
-const Panel = ({ children, panelRef, loader: Loader }) => {
+const Panel = ({ children, panelRef, Loader }) => {
   const [state, send] = useService(panelRef);
   const { id, name, ...meta } = state.context;
 
@@ -10,14 +10,14 @@ const Panel = ({ children, panelRef, loader: Loader }) => {
   const isEditing = state.matches("editing");
 
   useEffect(() => {
-    setTimeout(_ => send("INITIALIZE"), 2000);
+    send("INITIALIZE");
 
     return _ => send("COMMIT");
   }, [send]);
 
   if (isLoading) {
-    if (React.isValidElement(<Loader />)) {
-      return <Loader />;
+    if (isValidElement(<Loader/>)) {
+      return <Loader/>;
     }
 
     return <Fragment>loading...</Fragment>;
