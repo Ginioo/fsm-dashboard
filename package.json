@@ -19,6 +19,8 @@
     "cz-conventional-changelog": "3.2.0",
     "lodash": "4.17.15",
     "prettier": "2.0.5",
+    "react-virtualized": "^9.21.2",
+    "react-window": "1.8.5",
     "styled-components": "4.4.1",
     "xstate": "4.9.0"
   },
