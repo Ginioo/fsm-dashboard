@@ -14,7 +14,12 @@ const Dashboard = ({ children, dataProvider, data }) => {
           name: it.name,
           ref: spawn(panelMachine.withContext(it).withConfig({
             services: {
-              fetchDashboard: ctx => dataProvider.fetchDashboard(ctx.id)
+              fetchDashboard: ctx => {
+                if (dataProvider && typeof dataProvider.fetchDashboard === "function") {
+                  return dataProvider.fetchDashboard(ctx.id);
+                }
+                return new Promise(resolve => resolve({}));
+              }
             }
           }))
         }));
@@ -33,7 +38,7 @@ const Dashboard = ({ children, dataProvider, data }) => {
         if (dataProvider && typeof dataProvider.fetchDashboards === "function") {
           return dataProvider.fetchDashboards();
         }
-        if (data && typeof data === "object") {
+        if (typeof data !== "undefined") {
           return new Promise(resolve => resolve(data));
         }
         return new Promise(resolve => resolve({}));
