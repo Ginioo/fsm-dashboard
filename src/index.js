@@ -42,7 +42,7 @@ const dataProvider = {
   }
 };
 
-const SimpleDashboard = ({ children, dataProvider, TabButton }) => (
+const SimpleDashboard = ({ children, dataProvider, TabButton, Loader }) => (
   <Dashboard dataProvider={dataProvider}>
     {({ current, dashboards, selectDashboard }) => (
       <Fragment>
@@ -90,6 +90,7 @@ ReactDOM.render(
   <SimpleDashboard
     dataProvider={dataProvider}
     TabButton={SampleButton}
+    Loader={Loader}
   >
     {({ id, name, meta }) => (
       <Fragment>
